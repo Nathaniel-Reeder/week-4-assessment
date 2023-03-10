@@ -12,6 +12,6 @@ const { getCompliment, getFortune, createGoals, editGoal } = require('./controll
 app.get("/api/compliment", getCompliment);
 app.get("/api/fortune", getFortune);
 app.post("/api/goals", createGoals);
-app.put("/api/goals", editGoal)
+app.put("/api/goals/:id", editGoal)
 
 app.listen(4000, () => console.log("Server running on 4000"));

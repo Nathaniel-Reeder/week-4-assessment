@@ -37,7 +37,22 @@ module.exports = {
     }, 
 
     editGoal: (req, res) => {
-        console.log(req.body)
+        idToChange = req.params
+        let {id} = idToChange
+        id = parseInt(id)
+        newObj = req.body
+        // console.log(newObj)
+
+        for(let i = 0; i < goalsArr.length; i++){
+            console.log(goalsArr[i].id)
+            if (goalsArr[i].id === id){
+                goalsArr[i].title = newObj.title
+                goalsArr[i].checkIn = newObj.checkIn
+                res.status(200).send(goalsArr[i])
+            } else {
+                res.sendStatus(404)
+            }
+        }
     }
 
 }

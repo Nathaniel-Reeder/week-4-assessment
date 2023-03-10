@@ -42,9 +42,17 @@ const createGoals = (event) => {
 const updateGoal = (event) => {
     event.preventDefault();
 
-    let id = document.getElementById('goal-update')
+    let id = document.getElementById('goal-update').value
 
-    axios.put("http://localhost:4000/api/goals/" + id).then(res => {
+    let title = document.getElementById('new-title')
+    let checkIn = document.getElementById('new-check-in')
+
+    let bodyObj = {
+        title: title.value, 
+        checkIn: checkIn.value
+    }
+
+    axios.put("http://localhost:4000/api/goals/" + id, bodyObj).then(res => {
         createGoalCard(res.data)
     })
     
