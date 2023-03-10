@@ -1,3 +1,12 @@
+let globalId = 1
+const goalsArr = [
+    {
+        title: "Track Goals",
+        checkIn: "Every day",
+        id: 0
+    }
+]
+
 module.exports = {
 
     getCompliment: (req, res) => {
@@ -16,6 +25,19 @@ module.exports = {
         let randomFortune = fortunes[randomIndex];
 
         res.status(200).send(randomFortune);
+    },
+
+    createGoals: (req, res) => {
+        goalObj = req.body
+        goalObj.id = globalId
+        globalId++
+        goalsArr.push(goalObj)
+        console.log(goalsArr)
+        res.status(200).send(goalObj)
+    }, 
+
+    editGoal: (req, res) => {
+        console.log(req.body)
     }
 
 }

@@ -8,6 +8,21 @@
 
     <button id="fortune-button">Get a fortune!</button>
 
+    <form action="main.js" id="goal-form" method="POST">
+      <h3>Log a Goal!</h3>
+      <input type="text" placeholder="Goal title" id="goal-title">
+      <input type="text" placeholder="Check-in date" id="check-in-date">
+      <button id="goal-submit">Submit</button>
+    </form>
+
+    <form action="main.js" id="update-goal" method="PUT">
+      <h3>Update a goal!</h3>
+      <input type="number" placeholder="ID of goal to update" id="goal-update">
+      <button id="update-submit">Submit</button>
+    </form>
+
+    <section id="goal-info"></section>
+
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="main.js"></script>
     
