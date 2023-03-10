@@ -37,22 +37,36 @@ module.exports = {
     }, 
 
     editGoal: (req, res) => {
-        idToChange = req.params
-        let {id} = idToChange
-        id = parseInt(id)
+        let {id} = req.params
+        
+        const index = goalsArr.findIndex(goal => goal.id === +id)
+        console.log(id)
+        console.log(goalsArr[index].id)
         newObj = req.body
         // console.log(newObj)
 
-        for(let i = 0; i < goalsArr.length; i++){
-            console.log(goalsArr[i].id)
-            if (goalsArr[i].id === id){
-                goalsArr[i].title = newObj.title
-                goalsArr[i].checkIn = newObj.checkIn
-                res.status(200).send(goalsArr[i])
-            } else {
-                res.sendStatus(404)
-            }
+        if (index >= 0){
+            goalsArr[index].title = newObj.title
+            goalsArr[index].checkIn = newObj.checkIn
+            res.status(200).send(goalsArr[index])
+        } else {
+            res.sendStatus(404)
         }
+    },
+
+    deleteGoal: (req, res) => {
+        let {id} = req.params
+        const index = goalsArr.findIndex(goal => goal.id === +id)
+
+        if(index >= 0){
+            goalsArr.splice(index, 1)
+            res.sendStatus(200)
+        } else {
+            res.sendStatus(404)
+        }
+    },
+    getAllGoals: (req, res) => {
+        res.status(200).send(goalsArr)
     }
 
 }
